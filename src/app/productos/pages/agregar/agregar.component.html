@@ -1,0 +1,54 @@
+<h1 class="mt-5"> Agregar Productos </h1>
+<hr>
+
+<form [formGroup]="miFormulario">
+  <div class="row g-3 align-items-center mb-3">
+    <div class="col-auto">
+      <label for="" class="col-form-label">Nombre</label>
+    </div>
+
+    <div class="col-auto">
+      <input type="text"
+              class="form-control"
+              formControlName="nombre">
+    </div>
+
+    <div class="col-auto">
+      <span
+      error-msg
+            [color]="color"
+            [mensaje]="texto1"
+            [valido]="!tieneError('nombre')">
+      </span>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+          <a class="btn btn-primary"  (click)="cambiarNombre()" > Agregar </a>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+          <a class="btn btn-primary"   (click)="cambiarColor()"> Cambiar Color </a>
+      </div>
+    </div>
+
+
+  </div>
+</form>
+
+
+<h3 class="mt-5">Formulario</h3>
+<pre> Valid: {{miFormulario.valid}} </pre>
+<pre> Value: {{miFormulario.value | json}} </pre>
+
+
+<div class="row"
+    *customIf="miFormulario.valid" >
+  <div class="col">
+    <div class="alert alert-primary">
+      Todo Ok!
+    </div>
+  </div>
+</div>
